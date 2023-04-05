@@ -33,9 +33,6 @@ app.get('/:nome/:lang', (req, res) =>{
 
 })
 
-app.get('/home', (req, res) =>{
-    res.render('home')
-})
 
 app.get('/perguntar', (req, res) =>{
     res.render('perguntar')
