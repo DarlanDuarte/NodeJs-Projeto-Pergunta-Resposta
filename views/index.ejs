@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Gui Perguntas e Respostas</title>
+</head>
+<body>
+    <h1>Guia perguntas!</h1>
+    <hr>
+    <h3>lista de perguntas</h3>
+    <p><%= nome %></p>
+    <p><%= lang %></p>
+    <p><%= empresa %></p>
+    <p><%= inscritos %></p>
+
+    <%if(msg){ %>
+        <h3>Isso é uma mensagem de error!</h3>
+    <%}else{ %>
+        <h3>Não há mensagem</h3>
+    <%} %>
+
+    <%produtos.forEach((element, index) =>{ %>
+        <h4>
+            <hr>
+            <%=  element.nome  %>
+            <%=  element.preço %>
+        </h4>
+    <%})%>
+    <h1>Estilo BootStrap</h1>
+
+    <!-- <img src="/img/imagem.jpg" alt="imagem"> -->
+
+
+</body>
+</html>
