@@ -1,11 +1,12 @@
 const express = require("express");
 const bodyParser = require('body-parser')
 const connection = require('./database/database')
+const Pergunta = require('./database/Pergunta')
 
 //Database
 connection
   .authenticate().then(() =>{
-    console.log('Conexão feita com o banco de dados')
+    console.log('Conexão bem sucedida com o banco de dados')
   }).catch((error) => console.log(error))
 
 const app = express();
@@ -23,7 +24,13 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 app.get("/", (req, res) => {
-  res.render("index");
+  Pergunta.findAll({raw: true, order: [
+    ['id', 'DESC'] // DESC => Decrescente e ASC => Crescente
+  ]}).then((perguntas) =>{
+    res.render('index', {
+      pergunta: perguntas
+    })
+  })
 }); 
 
 
@@ -34,7 +41,13 @@ app.get("/perguntar", (req, res) => {
 app.post('/saveform', (req, res) =>{
   let titulo = req.body.titulo
   let descricao = req.body.descricao
-  res.send(`Formulario Recebido com Sucesso! Titulo: ${titulo} e Descriçao: ${descricao}`)
+  
+  Pergunta.create({
+    titulo: titulo,
+    descriçao: descricao,
+  }).then(() =>{
+    res.redirect('/')
+  })
 })
 
 
@@ -43,7 +56,7 @@ app.post('/saveform', (req, res) =>{
 
 
 
-app.listen("8080", () => {
+app.listen(8080, () => {
   console.log("App Rodando");
 });
 

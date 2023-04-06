@@ -13,5 +13,4 @@ module.exports = connection
 * dialect: /* one of 'mysql' | 'postgres' | 'sqlite' |'mariadb' | 'mssql'|'db2' | 'snowflake' | 'oracle' 
 *
 *
-* 
 =======================================================*/
