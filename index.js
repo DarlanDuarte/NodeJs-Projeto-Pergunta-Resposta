@@ -51,7 +51,22 @@ app.post('/saveform', (req, res) =>{
 })
 
 
+app.get('/pergunta/:id', (req, res) =>{
+  const id = req.params.id
 
+  Pergunta.findOne({
+    where: {id: id}
+
+  }).then((pergunta) =>{
+    if(pergunta != undefined){
+      res.render('pergunta')
+    }else{
+      res.redirect('/')
+    }
+
+  })
+
+})
 
 
 
