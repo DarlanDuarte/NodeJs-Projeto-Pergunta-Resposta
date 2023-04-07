@@ -10,3 +10,8 @@ body{
 .tituloPergunta{
     text-align: center;
 }
+
+.label-corpo{
+    font-weight: bold;
+    font-size: 20px;
+}
